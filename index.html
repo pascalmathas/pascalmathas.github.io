@@ -1,1 +1,261 @@
-working on it...
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Pascal Mathas</title>
+<meta name="description" content="MSc Artificial Intelligence, University of Amsterdam. Natural language processing, machine learning and large language models.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pascal Mathas">
+<meta property="og:description" content="MSc Artificial Intelligence, University of Amsterdam. Natural language processing, machine learning and large language models.">
+<meta property="og:url" content="https://pascalmathas.github.io/">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Pascal Mathas",
+  "url": "https://pascalmathas.github.io/",
+  "description": "MSc Artificial Intelligence, University of Amsterdam. Natural language processing, machine learning and large language models.",
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Amsterdam",
+    "sameAs": "https://www.uva.nl/"
+  },
+  "knowsAbout": [
+    "Natural language processing",
+    "Large language models",
+    "Machine learning",
+    "Deep learning",
+    "Retrieval-augmented generation"
+  ],
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ORCID",
+    "value": "0009-0003-5302-8621"
+  },
+  "sameAs": [
+    "https://orcid.org/0009-0003-5302-8621",
+    "https://github.com/pascalmathas",
+    "https://www.linkedin.com/in/pascalmathas/",
+    "https://aclanthology.org/people/pascal-mathas/unverified/"
+  ]
+}
+</script>
+
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem("theme");
+      if (stored === "dark" || stored === "light") {
+        document.documentElement.setAttribute("data-theme", stored);
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="theme" type="button" aria-label="Toggle dark mode">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4.2"></circle>
+    <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+  </svg>
+</button>
+
+<div class="page">
+
+  <aside class="sidebar">
+    <div>
+      <h1 class="name"><a href="#about">Pascal Mathas</a></h1>
+      <p class="tagline">MSc Artificial Intelligence.<br>NLP, ML, LLMs.</p>
+
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-links">
+      <a href="https://www.linkedin.com/in/pascalmathas/">LinkedIn</a><br>
+      <a href="https://github.com/pascalmathas">GitHub</a><br>
+      <a href="https://orcid.org/0009-0003-5302-8621">ORCID</a><br>
+      <a href="https://aclanthology.org/people/pascal-mathas/unverified/">ACL Anthology</a><br>
+      <a href="mailto:pascalmathas29@gmail.com">Email</a>
+      <p class="colophon">&copy; 2026 Pascal Mathas</p>
+    </div>
+  </aside>
+
+  <main>
+
+    <section id="about">
+      <h2>About</h2>
+      <p class="lead">I recently finished a master's in Artificial Intelligence at the University of Amsterdam. Most of my research and project work has been in natural language processing and large language models, with broader interests in machine learning and deep learning, in particular how models are trained, adapted and evaluated.</p>
+      <p class="available">Currently looking for roles in NLP, ML and LLMs, in Amsterdam or Berlin.</p>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+
+      <div class="list">
+        <article class="entry">
+          <h3>Retrieval-Augmented Simplification of Sectioned Biomedical Abstracts</h3>
+          <p class="meta">Pascal Mathas, Jan Bakker, Jaap Kamps<br>EMNLP 2026 Findings &middot; Accepted</p>
+          <p>This paper presents a RAG pipeline that generates Cochrane plain-language summaries by retrieving topically similar abstract-PLS section pairs and splitting them into rephrased vs. inserted content, improving simplification quality (SARI) over non-RAG baselines across three LLM families.</p>
+          <details>
+            <summary>Abstract</summary>
+            <p>Cochrane systematic reviews pair each technical abstract with a plain-language summary (PLS), but most biomedical papers lack a PLS. We propose a retrieval-augmented generation (RAG) pipeline that generates Cochrane PLS from biomedical abstracts. The pipeline exploits the section-level alignment of the Cochrane-Sections dataset in two ways. First, it provides the LLM with abstract-PLS section pairs from topically related reviews, giving more granular in-context examples than whole abstract-PLS pairs. Second, each retrieved PLS section is split into its rephrased and inserted sentences, showing the LLM both the rephrasing and the insertion behavior it should reproduce. Our pipeline outperforms a non-RAG LLM and three RAG ablations on the Cochrane-Sections test set, with the same gain trend across three different LLM families.</p>
+          </details>
+          <p class="links"><a href="#">pdf</a> &middot; <a href="#">anthology</a> &middot; <a href="https://github.com/pascalmathas/cochrane_sections_rag">code</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>Plan-Guided Text Simplification with Extended Contexts</h3>
+          <p class="meta">Pascal Mathas, Jan Bakker, Jaap Kamps<br>READI&times;TSAR @ LREC 2026 &middot; Published</p>
+          <p>Fine-tuned plan-guided BART models degrade sharply in plan-following accuracy as context grows, while a prompting-based approach using instruction-tuned Qwen models stays robust across context lengths and outperforms BART throughout.</p>
+          <details>
+            <summary>Abstract</summary>
+            <p>In this paper, we investigate the impact of increasing context lengths (one to five paragraphs) on plan-following accuracy in plan-guided text simplification. Plan-guided models simplify text according to sentence-level operation labels such as copy, rephrase, split, and delete. Previous work fine-tunes BART with target reading-level and sentence-level operation tokens to perform this task. We find that BART's plan-following accuracy on Newsela-auto drops significantly as context increases from one to five paragraphs. This means that the model becomes less reliable with longer contexts, and the quality of its outputs decreases. To address this, we propose replacing the fine-tuned BART models with a prompting-based approach using instruction-tuned Qwen models. We find that this approach not only maintains robust plan-following across all context lengths, but even at the longest context length still exceeds BART's performance at the shortest. We further provide ablations on model size and model family, showing that a minimum model capacity is required for the approach to work and that it transfers across LLM families.</p>
+          </details>
+          <details>
+            <summary>BibTeX</summary>
+            <pre>@inproceedings{mathas2026plan,
+  title={Plan-Guided Text Simplification with Extended Contexts},
+  author={Mathas, Pascal and Bakker, Jan and Kamps, Jaap},
+  booktitle={Proceedings of the Joint Workshop on Readability and Text Simplification (READIxTSAR)@ LREC},
+  volume={2026},
+  pages={121--129},
+  year={2026}
+}</pre>
+          </details>
+          <p class="links"><a href="https://aclanthology.org/anthology-files/pdf/readi/2026.readi-1.9.pdf">pdf</a> &middot; <a href="https://aclanthology.org/2026.readi-1.9/">anthology</a> &middot; <a href="https://github.com/pascalmathas/plan_simp_extended">code</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>University of Amsterdam at the CLEF 2026 SimpleText Track</h3>
+          <p class="meta">Pascal Mathas, Berkay Chakar, David Carranza Navarrete, Jan Bakker, Jaap Kamps<br>CLEF 2026 &middot; Accepted</p>
+          <p>Outlines the University of Amsterdam's submissions for the CLEF 2026 SimpleText track, tackling tasks in document-level text simplification, overgeneration detection, and research area classification.</p>
+          <details>
+            <summary>Abstract</summary>
+            <p>This paper reports on the University of Amsterdam's participation in the CLEF 2026 SimpleText track. We participated in Task 1.2 document-level text simplification, Task 2 for overgeneration detection and classification, and Task 3 for research area classification. For document-level text simplification, we submit a baseline, a plan-guided variant, and a retrieval-augmented method. We find that the RAG method, which provides abstract-PLS section pairs as in-context examples to the simplification model, outperforms both our baseline and our plan-guided variant, with the largest gains in the simplification of full Cochrane abstracts.</p>
+          </details>
+          <p class="links"><a href="#">pdf</a> &middot; <a href="#">anthology</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="list">
+        <article class="entry">
+          <h3>Multilingual DPO architectures</h3>
+          <p class="meta">BSc thesis &middot; 2025</p>
+          <p>Compares three architectures for building synthetic multilingual preference datasets for DPO: translating the full dataset, translating prompts and generating both responses, or translating prompts and generating the chosen response while translating the rejected one.</p>
+          <p class="links"><a href="https://github.com/pascalmathas/multilingual_DPO_architectures">repository</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>Extending Learning2Rewrite for AI-text detection</h3>
+          <p class="meta">2025</p>
+          <p>Extends the Learning2Rewrite framework by comparing LLaMA, Phi and Qwen as rewrite models and combining multiple similarity metrics, improving AI-text detection accuracy and robustness across datasets.</p>
+          <p class="links"><a href="https://github.com/pascalmathas/Learning2Rewrite_">repository</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>Interactive podcast discovery</h3>
+          <p class="meta">2025</p>
+          <p>A visual analytics system that turns podcast audio into a browsable semantic landscape, pairing a WhisperX transcription pipeline and BERTopic topic modeling with LLM-based transcript segmentation, 2D cluster visualization and a chat interface.</p>
+          <p class="links"><a href="https://github.com/pascalmathas/interactive_podcast_discovery">repository</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>Parameter-efficient fine-tuning for EEG foundation models</h3>
+          <p class="meta">2025</p>
+          <p>Replication and extension of the LaBraM brain model using LoRA, AdaLoRA and BitFit, plus residual vector quantization, benchmarked on the TUEV, TUAB, SEED-V and BCI-IV2a datasets.</p>
+          <p class="links"><a href="https://github.com/pascalmathas/labram_finetune">repository</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>M3-Embedding reproduction</h3>
+          <p class="meta">2025</p>
+          <p>Reproduces and extends M3-Embedding for multilingual text retrieval, adding self-distillation and external teacher models to the original training setup.</p>
+          <p class="links"><a href="https://github.com/pascalmathas/m3_embedding_reproduction">repository</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>Intoxication detection from accelerometer data</h3>
+          <p class="meta">2025</p>
+          <p>An end-to-end machine learning pipeline that predicts intoxication from smartphone accelerometer signals, covering data ingestion, training, evaluation and deployment.</p>
+          <p class="links"><a href="https://github.com/pascalmathas/mlops_drunk_detector">repository</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="item">
+        <h3>MSc Artificial Intelligence</h3>
+        <p class="meta">University of Amsterdam &middot; 2024 &ndash; 2026 &middot; Cum laude &middot; Thesis graded 9.0</p>
+      </div>
+
+      <div class="item">
+        <h3>BSc Artificial Intelligence</h3>
+        <p class="meta">University of Amsterdam &middot; 2022 &ndash; 2025 &middot; Cum laude &middot; Thesis graded 8.5</p>
+      </div>
+
+      <div class="item">
+        <h3>BA History</h3>
+        <p class="meta">University of Amsterdam &middot; 2019 &ndash; 2023 &middot; Thesis graded 8.0<br>Minor in Sociology, 2021 &ndash; 2022</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+
+      <dl>
+        <div class="skill">
+          <dt>research</dt>
+          <dd>Natural language processing, large language models, retrieval-augmented generation, machine learning, deep learning</dd>
+        </div>
+        <div class="skill">
+          <dt>methods</dt>
+          <dd>Fine-tuning, parameter-efficient fine-tuning, preference optimization, retrieval, prompting, topic modeling, evaluation</dd>
+        </div>
+        <div class="skill">
+          <dt>frameworks</dt>
+          <dd>PyTorch, Hugging Face Transformers, PEFT, sentence-transformers, scikit-learn</dd>
+        </div>
+        <div class="skill">
+          <dt>tools</dt>
+          <dd>Python, SLURM, Docker, Weights &amp; Biases, Git</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>You can reach me directly at <a href="mailto:pascalmathas29@gmail.com">pascalmathas29@gmail.com</a>.</p>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
