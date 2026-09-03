@@ -103,7 +103,10 @@ p { margin: 0 0 0.85em; }
   line-height: 1.85;
 }
 
-main { padding: 56px 0 88px; }
+main {
+  min-width: 0;
+  padding: 56px 0 88px;
+}
 
 main > section:last-child { min-height: calc(100vh - 144px); }
 
@@ -181,7 +184,8 @@ details pre {
   line-height: 1.6;
   color: var(--muted);
   margin: 8px 0 0;
-  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 summary {
@@ -195,9 +199,13 @@ summary {
 
 summary::-webkit-details-marker { display: none; }
 
-summary::before { content: "+ "; }
+summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.2em;
+}
 
-details[open] summary::before { content: "\2212 "; }
+details[open] summary::before { content: "\2212"; }
 
 summary:hover { color: var(--fg); }
 
