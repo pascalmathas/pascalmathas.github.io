@@ -17,6 +17,11 @@
     history.replaceState(null, "", location.pathname + location.search);
   });
 
+  document.querySelectorAll('a[href^="http"]').forEach(function (link) {
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+  });
+
   var sections = document.querySelectorAll("main section[id]");
   var lastSection = document.querySelector("main > section:last-child");
   var offset = parseInt(getComputedStyle(sections[0]).scrollMarginTop, 10) || 0;
