@@ -254,6 +254,8 @@ dl { margin: 0; }
   color: var(--muted);
 }
 
+.colophon-bottom { display: none; }
+
 .theme {
   position: fixed;
   top: 20px;
@@ -310,9 +312,29 @@ dl { margin: 0; }
     margin-bottom: 14px;
   }
 
-  main { padding: 34px 0 68px; }
+  main { padding: 34px 0 40px; }
 
   section { scroll-margin-top: 24px; }
 
   main > section:last-child { min-height: 0; }
+
+  .sidebar-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+  }
+
+  .sidebar-links br { display: none; }
+
+  .sidebar .colophon { display: none; }
+
+  .colophon-bottom {
+    display: block;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    margin: 0 0 40px;
+  }
 }

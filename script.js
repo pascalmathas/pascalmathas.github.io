@@ -11,6 +11,12 @@
     } catch (e) {}
   });
 
+  document.querySelector(".name a").addEventListener("click", function (event) {
+    event.preventDefault();
+    window.scrollTo(0, 0);
+    history.replaceState(null, "", location.pathname + location.search);
+  });
+
   var sections = document.querySelectorAll("main section[id]");
   var lastSection = document.querySelector("main > section:last-child");
   var offset = parseInt(getComputedStyle(sections[0]).scrollMarginTop, 10) || 0;
