@@ -119,7 +119,7 @@
             <summary>Abstract</summary>
             <p>Cochrane systematic reviews pair each technical abstract with a plain-language summary (PLS), but most biomedical papers lack a PLS. We propose a retrieval-augmented generation (RAG) pipeline that generates Cochrane PLS from biomedical abstracts. The pipeline exploits the section-level alignment of the Cochrane-Sections dataset in two ways. First, it provides the LLM with abstract-PLS section pairs from topically related reviews, giving more granular in-context examples than whole abstract-PLS pairs. Second, each retrieved PLS section is split into its rephrased and inserted sentences, showing the LLM both the rephrasing and the insertion behavior it should reproduce. Our pipeline outperforms a non-RAG LLM and three RAG ablations on the Cochrane-Sections test set, with the same gain trend across three different LLM families.</p>
           </details>
-          <p class="links"><a href="#">pdf</a> &middot; <a href="#">anthology</a> &middot; <a href="https://github.com/pascalmathas/cochrane_sections_rag">code</a></p>
+          <p class="links"><a href="#">pdf</a> &middot; <a href="https://github.com/pascalmathas/cochrane_sections_rag/blob/main/supp/poster.pdf">poster</a> &middot; <a href="#">anthology</a> &middot; <a href="https://github.com/pascalmathas/cochrane_sections_rag">code</a></p>
         </article>
 
         <article class="entry">
@@ -146,13 +146,29 @@
 
         <article class="entry">
           <h3>University of Amsterdam at the CLEF 2026 SimpleText Track</h3>
-          <p class="meta">Pascal Mathas, Berkay Chakar, David Carranza Navarrete, Jan Bakker, Jaap Kamps<br>CLEF 2026 &middot; Accepted</p>
+          <p class="meta">Pascal Mathas, Berkay Chakar, David Carranza Navarrete, Jan Bakker, Jaap Kamps<br>CLEF 2026 Working Notes &middot; Published</p>
           <p>Outlines the University of Amsterdam's submissions for the CLEF 2026 SimpleText track, tackling tasks in document-level text simplification, overgeneration detection, and research area classification.</p>
           <details>
             <summary>Abstract</summary>
             <p>This paper reports on the University of Amsterdam's participation in the CLEF 2026 SimpleText track. We participated in Task 1.2 document-level text simplification, Task 2 for overgeneration detection and classification, and Task 3 for research area classification. For document-level text simplification, we submit a baseline, a plan-guided variant, and a retrieval-augmented method. We find that the RAG method, which provides abstract-PLS section pairs as in-context examples to the simplification model, outperforms both our baseline and our plan-guided variant, with the largest gains in the simplification of full Cochrane abstracts.</p>
           </details>
-          <p class="links"><a href="#">pdf</a> &middot; <a href="#">anthology</a></p>
+          <details>
+            <summary>BibTeX</summary>
+            <pre>@inproceedings{mathas2026university,
+  title={University of Amsterdam at the {CLEF} 2026 {SimpleText} Track},
+  author={Mathas, Pascal and Chakar, Berkay and Carranza Navarrete, David and Bakker, Jan and Kamps, Jaap},
+  booktitle={Working Notes of the Conference and Labs of the Evaluation Forum (CLEF 2026)},
+  editor={S{\'a}nchez Salido, Eva and Barr{\'o}n-Cede{\~n}o, Alberto and Garc{\'i}a Seco de Herrera, Alba and MacAvaney, Sean and Stru{\ss}, Julia Maria},
+  series={CEUR Workshop Proceedings},
+  volume={4283},
+  pages={6146--6155},
+  address={Jena, Germany},
+  publisher={CEUR-WS.org},
+  year={2026},
+  url={https://ceur-ws.org/Vol-4283/paper464.pdf}
+}</pre>
+          </details>
+          <p class="links"><a href="https://ceur-ws.org/Vol-4283/paper464.pdf">pdf</a> &middot; <a href="https://ceur-ws.org/Vol-4283/">proceedings</a></p>
         </article>
       </div>
     </section>
