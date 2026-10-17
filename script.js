@@ -24,12 +24,23 @@
 
   var sections = document.querySelectorAll("main section[id]");
   var lastSection = document.querySelector("main > section:last-child");
-  var offset = parseInt(getComputedStyle(sections[0]).scrollMarginTop, 10) || 0;
+  var head = document.querySelector(".sidebar-head");
+  var offset = 0;
 
   var links = {};
   document.querySelectorAll(".nav a").forEach(function (link) {
     links[link.getAttribute("href").slice(1)] = link;
   });
+
+  function measureHead() {
+    var mobile = window.innerWidth <= 860;
+    root.style.setProperty("--head-height", mobile ? head.offsetHeight + "px" : "0px");
+    offset = parseInt(getComputedStyle(sections[0]).scrollMarginTop, 10) || 0;
+  }
+
+  function updateStuck() {
+    head.classList.toggle("is-stuck", window.pageYOffset > 0 && head.getBoundingClientRect().top <= 0);
+  }
 
   function updateActive() {
     var active = sections[0];
@@ -50,8 +61,10 @@
   }
 
   function relayout() {
+    measureHead();
     fitLastSection();
     updateActive();
+    updateStuck();
   }
 
   var pending = false;
@@ -60,6 +73,7 @@
     pending = true;
     requestAnimationFrame(function () {
       updateActive();
+      updateStuck();
       pending = false;
     });
   }, { passive: true });
