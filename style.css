@@ -256,10 +256,14 @@ dl { margin: 0; }
 
 .colophon-bottom { display: none; }
 
-.theme {
+.theme-switch {
   position: fixed;
   top: 20px;
   right: 20px;
+  z-index: 2;
+}
+
+.theme {
   width: 32px;
   height: 32px;
   display: flex;
@@ -270,10 +274,43 @@ dl { margin: 0; }
   border: 0;
   color: var(--muted);
   cursor: pointer;
-  z-index: 2;
 }
 
-.theme:hover { color: var(--fg); }
+.theme:hover,
+.theme[aria-expanded="true"] { color: var(--fg); }
+
+.theme-menu {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  min-width: 96px;
+  padding: 6px 0;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+}
+
+.theme-menu[hidden] { display: none; }
+
+.theme-menu button {
+  display: block;
+  width: 100%;
+  padding: 0 12px;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.85;
+  text-align: left;
+  cursor: pointer;
+}
+
+.theme-menu button:hover,
+.theme-menu button:focus-visible,
+.theme-menu button[aria-checked="true"] {
+  color: var(--fg);
+  outline: none;
+}
 
 .theme svg { width: 16px; height: 16px; display: block; }
 

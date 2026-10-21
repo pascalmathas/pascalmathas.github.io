@@ -1,15 +1,54 @@
 (function () {
   var root = document.documentElement;
 
-  document.querySelector(".theme").addEventListener("click", function () {
-    var set = root.getAttribute("data-theme");
-    var current = set || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    var next = current === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem("theme", next);
-    } catch (e) {}
+  var themeButton = document.querySelector(".theme");
+  var themeMenu = document.querySelector(".theme-menu");
+  var themeOptions = themeMenu.querySelectorAll("button");
+
+  function markTheme() {
+    var current = root.getAttribute("data-theme") || "system";
+    themeOptions.forEach(function (option) {
+      option.setAttribute("aria-checked", option.getAttribute("data-theme-value") === current ? "true" : "false");
+    });
+  }
+
+  function setMenu(open) {
+    themeMenu.hidden = !open;
+    themeButton.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  themeButton.addEventListener("click", function (event) {
+    event.stopPropagation();
+    setMenu(themeMenu.hidden);
+    if (!themeMenu.hidden) themeMenu.querySelector('[aria-checked="true"]').focus();
   });
+
+  themeOptions.forEach(function (option) {
+    option.addEventListener("click", function () {
+      var value = option.getAttribute("data-theme-value");
+      if (value === "system") root.removeAttribute("data-theme");
+      else root.setAttribute("data-theme", value);
+      try {
+        localStorage.setItem("theme", value);
+      } catch (e) {}
+      markTheme();
+      setMenu(false);
+      themeButton.focus();
+    });
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!themeMenu.hidden && !themeMenu.contains(event.target)) setMenu(false);
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !themeMenu.hidden) {
+      setMenu(false);
+      themeButton.focus();
+    }
+  });
+
+  markTheme();
 
   document.querySelector(".name a").addEventListener("click", function (event) {
     event.preventDefault();
