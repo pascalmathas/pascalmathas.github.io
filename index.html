@@ -12,6 +12,8 @@
 <meta property="og:description" content="MSc Artificial Intelligence, University of Amsterdam. Natural language processing, machine learning and large language models.">
 <meta property="og:url" content="https://pascalmathas.github.io/">
 
+<link rel="canonical" href="https://pascalmathas.github.io/">
+
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
 <script type="application/ld+json">
@@ -120,13 +122,23 @@
       <div class="list">
         <article class="entry">
           <h3>Retrieval-Augmented Simplification of Sectioned Biomedical Abstracts</h3>
-          <p class="meta">Pascal Mathas, Jan Bakker, Jaap Kamps<br>EMNLP 2026 Findings &middot; Accepted</p>
+          <p class="meta">Pascal Mathas, Jan Bakker, Jaap Kamps<br>EMNLP 2026 Findings &middot; Published</p>
           <p>This paper presents a RAG pipeline that generates Cochrane plain-language summaries by retrieving topically similar abstract-PLS section pairs and splitting them into rephrased vs. inserted content, improving simplification quality (SARI) over non-RAG baselines across three LLM families.</p>
           <details>
             <summary>Abstract</summary>
             <p>Cochrane systematic reviews pair each technical abstract with a plain-language summary (PLS), but most biomedical papers lack a PLS. We propose a retrieval-augmented generation (RAG) pipeline that generates Cochrane PLS from biomedical abstracts. The pipeline exploits the section-level alignment of the Cochrane-Sections dataset in two ways. First, it provides the LLM with abstract-PLS section pairs from topically related reviews, giving more granular in-context examples than whole abstract-PLS pairs. Second, each retrieved PLS section is split into its rephrased and inserted sentences, showing the LLM both the rephrasing and the insertion behavior it should reproduce. Our pipeline outperforms a non-RAG LLM and three RAG ablations on the Cochrane-Sections test set, with the same gain trend across three different LLM families.</p>
           </details>
-          <p class="links"><a href="#">pdf</a> &middot; <a href="https://github.com/pascalmathas/cochrane_sections_rag/blob/main/supp/poster.pdf">poster</a> &middot; <a href="#">anthology</a> &middot; <a href="https://github.com/pascalmathas/cochrane_sections_rag">code</a></p>
+          <details>
+            <summary>BibTeX</summary>
+            <pre>@inproceedings{mathas2026retrieval,
+  title={Retrieval-Augmented Simplification of Sectioned Biomedical Abstracts},
+  author={Mathas, Pascal and Bakker, Jan and Kamps, Jaap},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2026},
+  pages={32209--32219},
+  year={2026}
+}</pre>
+          </details>
+          <p class="links"><a href="https://aclanthology.org/2026.findings-emnlp.1513.pdf">pdf</a> &middot; <a href="https://github.com/pascalmathas/cochrane_sections_rag/blob/main/supp/poster.pdf">poster</a> &middot; <a href="https://aclanthology.org/2026.findings-emnlp.1513/">anthology</a> &middot; <a href="https://github.com/pascalmathas/cochrane_sections_rag">code</a></p>
         </article>
 
         <article class="entry">
