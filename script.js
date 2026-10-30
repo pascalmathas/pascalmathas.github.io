@@ -1,126 +1,37 @@
 (function () {
   var root = document.documentElement;
+  var main = document.querySelector("main");
+  var groups = { about: "about", contact: "about", publications: "publications", projects: "projects", education: "background", skills: "background", background: "background" };
+  var links = document.querySelectorAll(".nav a");
 
-  var themeButton = document.querySelector(".theme");
-  var themeMenu = document.querySelector(".theme-menu");
-  var themeOptions = themeMenu.querySelectorAll("button");
-
-  function markTheme() {
-    var current = root.getAttribute("data-theme") || "system";
-    themeOptions.forEach(function (option) {
-      option.setAttribute("aria-checked", option.getAttribute("data-theme-value") === current ? "true" : "false");
+  function show(name) {
+    root.setAttribute("data-tab", name);
+    main.scrollTop = 0;
+    links.forEach(function (link) {
+      link.classList.toggle("is-active", link.getAttribute("href") === "#" + name);
     });
   }
 
-  function setMenu(open) {
-    themeMenu.hidden = !open;
-    themeButton.setAttribute("aria-expanded", open ? "true" : "false");
-  }
+  root.classList.add("tabs");
+  show(groups[location.hash.slice(1)] || "about");
 
-  themeButton.addEventListener("click", function (event) {
-    event.stopPropagation();
-    setMenu(themeMenu.hidden);
-    if (!themeMenu.hidden) themeMenu.querySelector('[aria-checked="true"]').focus();
-  });
-
-  themeOptions.forEach(function (option) {
-    option.addEventListener("click", function () {
-      var value = option.getAttribute("data-theme-value");
-      if (value === "system") root.removeAttribute("data-theme");
-      else root.setAttribute("data-theme", value);
-      try {
-        localStorage.setItem("theme", value);
-      } catch (e) {}
-      markTheme();
-      setMenu(false);
-      themeButton.focus();
+  links.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      var name = link.getAttribute("href").slice(1);
+      history.replaceState(null, "", "#" + name);
+      show(name);
     });
   });
-
-  document.addEventListener("click", function (event) {
-    if (!themeMenu.hidden && !themeMenu.contains(event.target)) setMenu(false);
-  });
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && !themeMenu.hidden) {
-      setMenu(false);
-      themeButton.focus();
-    }
-  });
-
-  markTheme();
 
   document.querySelector(".name a").addEventListener("click", function (event) {
     event.preventDefault();
-    window.scrollTo(0, 0);
     history.replaceState(null, "", location.pathname + location.search);
+    show("about");
   });
 
   document.querySelectorAll('a[href^="http"]').forEach(function (link) {
     link.target = "_blank";
     link.rel = "noopener noreferrer";
   });
-
-  var sections = document.querySelectorAll("main section[id]");
-  var lastSection = document.querySelector("main > section:last-child");
-  var head = document.querySelector(".sidebar-head");
-  var offset = 0;
-
-  var links = {};
-  document.querySelectorAll(".nav a").forEach(function (link) {
-    links[link.getAttribute("href").slice(1)] = link;
-  });
-
-  function measureHead() {
-    var mobile = window.innerWidth <= 860;
-    root.style.setProperty("--head-height", mobile ? head.offsetHeight + "px" : "0px");
-    offset = parseInt(getComputedStyle(sections[0]).scrollMarginTop, 10) || 0;
-  }
-
-  function updateStuck() {
-    head.classList.toggle("is-stuck", window.pageYOffset > 0 && head.getBoundingClientRect().top <= 0);
-  }
-
-  function updateActive() {
-    var active = sections[0];
-    sections.forEach(function (section) {
-      if (section.getBoundingClientRect().top <= offset + 1) active = section;
-    });
-    for (var id in links) links[id].classList.remove("is-active");
-    if (links[active.id]) links[active.id].classList.add("is-active");
-  }
-
-  function fitLastSection() {
-    lastSection.style.minHeight = "";
-    if (window.innerWidth <= 860) return;
-    var top = lastSection.getBoundingClientRect().top + window.pageYOffset;
-    var wanted = top - offset + window.innerHeight;
-    var extra = wanted - root.scrollHeight;
-    lastSection.style.minHeight = lastSection.offsetHeight + extra + "px";
-  }
-
-  function relayout() {
-    measureHead();
-    fitLastSection();
-    updateActive();
-    updateStuck();
-  }
-
-  var pending = false;
-  window.addEventListener("scroll", function () {
-    if (pending) return;
-    pending = true;
-    requestAnimationFrame(function () {
-      updateActive();
-      updateStuck();
-      pending = false;
-    });
-  }, { passive: true });
-
-  window.addEventListener("resize", relayout);
-  document.querySelectorAll("main details").forEach(function (item) {
-    item.addEventListener("toggle", relayout);
-  });
-
-  relayout();
 })();

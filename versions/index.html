@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archive</title>
+<style>
+:root { --bg: #111111; --fg: #e8e8e8; --link: #9fc0ff; --mono: ui-monospace, Menlo, Consolas, monospace; color-scheme: dark; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.5;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--link); }
+h1 { font: inherit; font-weight: 700; margin: 0; }
+p { max-width: 72ch; margin: 0 0 10px; }
+section { margin-top: 40px; }
+h2 { font: 700 clamp(28px, 5vw, 52px)/1.05 Helvetica, Arial, sans-serif; letter-spacing: -0.04em; margin: 0 0 6px; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.tiles img { display: block; width: 100%; height: auto; border: 1px solid var(--fg); }
+@media (max-width: 700px) { .tiles { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>Archive</h1>
+<p>All versions of this site, newest first. <a href="../index.html">Back to the current site</a></p>
+
+<section>
+  <h2>03 No Scroll</h2>
+  <p><a href="../index.html">Open the page</a></p>
+  <div class="tiles"><img src="shots/tabs-top.webp" width="1000" height="643" alt="03 No Scroll, top of page"><img src="shots/tabs-pubs.webp" width="1000" height="643" alt="03 No Scroll, publications"></div>
+</section>
+
+<section>
+  <h2>02 Sidebar</h2>
+  <p><a href="sidebar/index.html">Open the page</a></p>
+  <div class="tiles"><img src="shots/sidebar-top.webp" width="1000" height="643" alt="02 Sidebar, top of page"><img src="shots/sidebar-pubs.webp" width="1000" height="643" alt="02 Sidebar, publications"></div>
+</section>
+
+<section>
+  <h2>01 Bare HTML</h2>
+  <p><a href="bare/index.html">Open the page</a></p>
+  <div class="tiles"><img src="shots/bare-top.webp" width="1000" height="643" alt="01 Bare HTML, top of page"><img src="shots/bare-pubs.webp" width="1000" height="643" alt="01 Bare HTML, publications"></div>
+</section>
+</body>
+</html>
