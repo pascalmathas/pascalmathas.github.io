@@ -95,8 +95,12 @@ body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-s
 
 .nav a { display: block; width: fit-content; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; }
 
-.nav a:hover,
 .nav a.is-active { background: var(--fg); color: var(--bg); }
+
+@media (hover: hover) {
+  .nav a:hover,
+  summary:hover { background: var(--fg); color: var(--bg); }
+}
 
 .sidebar-links a { display: block; width: fit-content; }
 
@@ -137,8 +141,6 @@ details pre { margin: 4px 0 10px; font-size: 12px; line-height: 1.4; }
 
 summary { font-weight: 700; }
 
-summary:hover { background: var(--fg); color: var(--bg); }
-
 .item { margin-bottom: 18px; }
 
 .item .meta { margin: 0; }
@@ -152,41 +154,11 @@ summary:hover { background: var(--fg); color: var(--bg); }
 @media (max-width: 860px) {
   .page { display: block; }
 
-  .sidebar { position: static; display: contents; }
+  .sidebar { position: static; height: auto; border-right: 0; }
 
-  .sidebar-head { display: contents; }
-
-  .name { padding: 12px 16px 0; font-size: 15vw; }
-
-  .tagline { padding: 0 16px; margin-bottom: 10px; }
-
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 12px;
-    padding: 6px 16px;
-    background: var(--bg);
-    border-block: var(--bar);
-  }
-
-  .nav a { font-size: 16px; }
-
-  .sidebar-links { display: flex; flex-wrap: wrap; gap: 0 12px; padding: 10px 16px; }
-
-  .sidebar .colophon { display: none; }
-
-  .colophon-bottom { display: block; padding: 12px 16px; font-weight: 700; }
-
-  section { padding: 12px 16px 32px; scroll-margin-top: 66px; }
+  section { padding: 12px 16px 32px; }
 
   h2 { font-size: 13vw; }
-
-  .lead { font-size: 20px; }
-
-  .skill { grid-template-columns: 90px minmax(0, 1fr); }
 }
 
 .entry > .links {
@@ -293,7 +265,8 @@ summary:hover { background: var(--fg); color: var(--bg); }
 .tabs,
 .tabs body { height: 100%; overflow: hidden; }
 
-.tabs .page { height: 100vh; height: 100dvh; }
+.tabs .page,
+.tabs .sidebar { height: 100vh; height: 100dvh; }
 
 .tabs main {
   height: 100vh;
@@ -354,30 +327,99 @@ summary:hover { background: var(--fg); color: var(--bg); }
   .tabs .list { grid-template-columns: minmax(0, 1fr); }
 }
 
-@media (max-width: 860px) {
-  .tabs .page {
+@media (max-width: 860px), (max-height: 500px) {
+  .tabs,
+  .tabs body { height: auto; overflow: visible; }
+
+  .tabs .page { height: auto; }
+
+  .tabs main { flex: none; height: auto; overflow: visible; scrollbar-gutter: auto; }
+}
+
+@media (max-width: 860px), (max-height: 500px) {
+  .tabs .page { display: flex; flex-flow: column nowrap; align-items: stretch; }
+
+  .tabs .sidebar,
+  .tabs .sidebar-head,
+  .tabs .nav,
+  .tabs main { display: contents; }
+
+  .tabs .name { margin: 0; padding: 10px 16px 2px; font-size: 40px; line-height: 1; }
+
+  .tabs .tagline { margin: 0; padding: 0 16px 10px; font-size: 13px; }
+
+  .tabs .degree { display: inline; }
+
+  .tabs .nav a {
+    display: block;
+    width: auto;
+    padding: 4px 16px 6px;
+    font-size: min(13vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    border-top: var(--bar);
+  }
+
+  .tabs .nav a[href="#about"] { order: 1; }
+
+  .tabs #about { order: 2; }
+
+  .tabs #contact { order: 3; }
+
+  .tabs .nav a[href="#publications"] { order: 4; }
+
+  .tabs #publications { order: 5; }
+
+  .tabs .nav a[href="#projects"] { order: 6; }
+
+  .tabs #projects { order: 7; }
+
+  .tabs .nav a[href="#background"] { order: 8; }
+
+  .tabs #education { order: 9; }
+
+  .tabs #skills { order: 10; }
+
+  .tabs .sidebar-links {
+    order: 11;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0 12px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-block: var(--bar);
   }
 
-  .tabs main {
-    flex: 1 1 0;
-    height: auto;
-    min-height: 0;
-    grid-template-columns: minmax(0, 1fr);
-  }
+  .tabs .sidebar .colophon { display: none; }
 
-  .name { padding: 8px 16px 0; font-size: 10.4vw; line-height: 1; }
+  .tabs .colophon-bottom { order: 12; display: block; padding: 8px 16px; font-weight: 700; }
 
-  .tagline { margin-bottom: 4px; font-size: 14px; }
+  .tabs main > section { min-width: 0; padding: 10px 16px 20px; }
 
-  .nav { position: static; display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; }
+  .tabs #about h2,
+  .tabs #publications h2,
+  .tabs #projects h2 { display: none; }
 
-  .nav a { font-size: min(16px, 4.1vw); }
+  .tabs h2 { margin-bottom: 8px; font-size: 32px; letter-spacing: -0.03em; }
 
-  .sidebar-links { padding-block: 6px; font-size: 14px; border-bottom: var(--bar); }
+  .tabs .lead { font-size: 19px; }
 
-  .colophon-bottom { display: none; }
+  .is-closed .nav a.is-active { background: none; color: inherit; }
+
+  .is-closed #about,
+  .is-closed #contact,
+  .is-closed #publications,
+  .is-closed #projects,
+  .is-closed #education,
+  .is-closed #skills { display: none; }
+}
+
+@media (max-height: 500px) {
+  .tabs .name { font-size: 28px; }
+
+  .tabs .nav a { font-size: 34px; }
+
+  .tabs .entry > .links { font-size: 0; }
 }
 
 :root[data-tab="publications"] { --bg: #8e9aa8; }
@@ -401,10 +443,13 @@ body,
   transition: --radius 150ms ease-out;
 }
 
-.links a:hover,
 .links a:focus-visible,
-#contact dd a:hover,
 #contact dd a:focus-visible { --radius: 130px; }
+
+@media (hover: hover) {
+  .links a:hover,
+  #contact dd a:hover { --radius: 130px; }
+}
 
 .links a:active,
 #contact dd a:active {

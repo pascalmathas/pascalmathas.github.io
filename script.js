@@ -3,10 +3,12 @@
   var main = document.querySelector("main");
   var groups = { about: "about", contact: "about", publications: "publications", projects: "projects", education: "background", skills: "background", background: "background" };
   var links = document.querySelectorAll(".nav a");
+  var slabs = window.matchMedia("(max-width: 860px), (max-height: 500px)");
 
   function show(name) {
     root.setAttribute("data-tab", name);
     main.scrollTop = 0;
+    window.scrollTo(0, 0);
     links.forEach(function (link) {
       link.classList.toggle("is-active", link.getAttribute("href") === "#" + name);
     });
@@ -19,14 +21,18 @@
     link.addEventListener("click", function (event) {
       event.preventDefault();
       var name = link.getAttribute("href").slice(1);
+      var closing = slabs.matches && root.getAttribute("data-tab") === name && !root.classList.contains("is-closed");
       history.replaceState(null, "", "#" + name);
+      root.classList.toggle("is-closed", closing);
       show(name);
+      if (slabs.matches && !closing) link.scrollIntoView();
     });
   });
 
   document.querySelector(".name a").addEventListener("click", function (event) {
     event.preventDefault();
     history.replaceState(null, "", location.pathname + location.search);
+    root.classList.remove("is-closed");
     show("about");
   });
 
