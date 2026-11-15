@@ -428,8 +428,13 @@ summary { font-weight: 700; }
 
 :root[data-tab="background"] { --bg: #93a08c; }
 
-body,
-.nav { transition: background-color 280ms ease; }
+@property --bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #979797;
+}
+
+:root { transition: --bg 280ms ease; }
 
 @property --radius {
   syntax: "<length>";
@@ -474,8 +479,7 @@ body,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body,
-  .nav,
+  :root,
   .links a,
   #contact dd a,
   summary::before { transition: none; }
