@@ -99,7 +99,8 @@ body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-s
 
 @media (hover: hover) {
   .nav a:hover,
-  summary:hover { background: var(--fg); color: var(--bg); }
+  summary:hover,
+  .bib .copy:hover { background: var(--fg); color: var(--bg); }
 }
 
 .sidebar-links a { display: block; width: fit-content; }
@@ -141,6 +142,33 @@ details pre { margin: 4px 0 10px; font-size: 12px; line-height: 1.4; }
 
 summary { font-weight: 700; }
 
+.bib { position: relative; }
+
+.bib .copy {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 7px);
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.bib .copy:active,
+.bib .copy.is-done { background: var(--fg); color: var(--bg); }
+
+summary,
+.copy {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .item { margin-bottom: 18px; }
 
 .item .meta { margin: 0; }
@@ -170,6 +198,17 @@ summary { font-weight: 700; }
 }
 
 #contact .skill { align-items: center; }
+
+.arrow {
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 5px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: square;
+  vertical-align: 0;
+}
 
 .entry,
 .item {
@@ -481,7 +520,7 @@ summary { font-weight: 700; }
 @media (prefers-reduced-motion: reduce) {
   :root,
   .links a,
-  #contact dd a,
+    #contact dd a,
   summary::before { transition: none; }
 
   .available::after { animation: none; }

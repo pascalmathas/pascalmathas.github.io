@@ -36,6 +36,38 @@
     show("about");
   });
 
+  document.querySelectorAll("details pre").forEach(function (pre) {
+    var summary = pre.parentNode.querySelector("summary");
+    var wrap = document.createElement("div");
+    var button = document.createElement("button");
+    var text = pre.textContent.split("\n").map(function (line) { return line.replace(/\s+$/, ""); }).join("\n").trim();
+    var timer;
+
+    wrap.className = "bib";
+    button.type = "button";
+    button.className = "copy";
+    button.textContent = "Copy";
+    pre.parentNode.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+    wrap.appendChild(button);
+
+    new ResizeObserver(function () {
+      button.style.height = summary.offsetHeight - 6 + "px";
+    }).observe(summary);
+
+    button.addEventListener("click", function () {
+      navigator.clipboard.writeText(text).then(function () {
+        button.textContent = "Copied";
+        button.classList.add("is-done");
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          button.textContent = "Copy";
+          button.classList.remove("is-done");
+        }, 1500);
+      });
+    });
+  });
+
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   document.querySelectorAll("details").forEach(function (item) {
